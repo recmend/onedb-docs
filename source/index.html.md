@@ -383,6 +383,62 @@ Parameter | Type | Description
 --------- | ---- | -----------
 `collection_id` *required* | string | Name given to the collection
 `limit` *optional* | number | Maximum number of items to be returned. Default limit: 10, Max limit: 100
+`fields` *optional* | string | comma delimited list of fields, e.g. fields=title,author_id
+`page_token` *optional* | string | Page token used for pagination if collection has more than `limit` items.
+
+**RESPONSE**
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`items` | array | List of Items within this collection
+`count` | number | Number of Items returned
+`limit` | number | The limit specified in the request (default: 10)
+`page_token` | string | The page token specified for pagination. Page token is only returned if there are more than `limit` items.
+
+## Search Items in a Collection
+
+> Example Request
+
+```shell
+curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items?q=title:business+model  \
+  -H "Bearer: sk_yourapikey" \
+```
+
+> Example Response
+
+```json
+{
+  "items": [
+    {
+      "id": "48f990f0-fd66-592e-9f5d-094bc2862ebd",
+      "updated_at": "2019-10-24T19:42:00.799Z",
+      "created_at": "2019-10-24T19:42:00.777Z",
+      "fields": {
+        "title": "16 Business Models for Your Next Company",
+        "body": "<p>The business model is an important decision that will have a significant impact on your profitability. It can differentiate you from competitors and give you an advantage over them. Your competitors can’t easily change their business model to match yours. Choose wisely.</p>",
+        "tags": ["Entrepreneurship", "Business Models", "Sales"],
+        "author_id": "38bc19cf-10ce-42b5-a4b0-54308bc54303"
+      }
+    },
+    ...
+  ],
+  "count": 5,
+  "page_token": "eyJvcmdhbml6YXRpb25faWQiOnsiQiI6bnVsbCwiQk9PTCI6bnVsbCwiQlMiOm51bGwsIkwiOm51bGwsIk0iOm51bGwsIk4iOm51bGwsIk5TIjpudWxsLCJOVUxMIjpudWxsZGI0ZWIwMDctYmUWJkNjAtN2M5NzI0NGNkZWFhIiwiU1MiOm51bGx9LCJ1c2VyX2lkIjp7IkIiOm51bGwsIkJPT0wiOm51bGwsIkJTIjpudWxsLCJMIjpudWxsLCJNIjpudWxsLCJOIjpudWxsLCJOUyI6bnVsbCwiTlVMTCI6bnVsbCwiUyI6Ijc4OTU5YjMwLThjYTQtOS1iMzdmLTNjMTVjMmQzYTYwMiIsIlNTIjpudWxsfX0="
+}
+```
+
+### HTTP Request
+
+`GET https://api.onedb.xyz/collections/:collection_id/items`
+
+**ARGUMENTS**
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`collection_id` *required* | string | Name given to the collection
+`q` *required* | string | Only returns items matching the specific query. e.g. `q=title:business+model author_id:38bc19cf-10ce-42b5-a4b0-54308bc54303`
+`limit` *optional* | number | Maximum number of items to be returned. Default limit: 10, Max limit: 100
+`fields` *optional* | string | comma delimited list of fields, e.g. fields=title,author_id
 `page_token` *optional* | string | Page token used for pagination if collection has more than `limit` items.
 
 **RESPONSE**
