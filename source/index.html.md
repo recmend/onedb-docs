@@ -416,7 +416,7 @@ curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf50
     "tags": ["Fin-tech", "Startups", "API"],
     "attachments": [
       {
-        "url": "https://onedb-uploads/attachments/Investing%20platform%20marketplace.pdf",
+        "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
         "id": "jguTNgbqhGZG",
         "size": 1414220,
         "type": "application/pdf",
@@ -440,7 +440,7 @@ Parameter | Type | Description
 `item_id` *required* | string | Unique identifier for the Item you are querying
 
 <aside class="information">
-In attachment objects included in the retrieved record (Attachments), only id, url, and filename are always returned. Other attachment properties may not be included.
+In attachment objects included in the retrieved item (attachments), only id, url, and filename are always returned. Other attachment properties may not be included.
 </aside>
 
 ## Create New Collection Item
@@ -457,7 +457,7 @@ curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5
         "body": "<p>The current and future of investing platforms.</p>",
         "tags": ["Fin-tech", "Startups", "API"],
         "attachments": {
-          "url": "https://onedb-uploads/attachments/Investing%20platform%20marketplace.pdf",
+          "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
           "id": "jguTNgbqhGZG",
           "size": 1414220,
           "type": "application/pdf",
@@ -481,7 +481,7 @@ curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5
     "tags": ["Fin-tech", "Startups", "API"],
     "attachments": [
       {
-        "url": "https://onedb-uploads/attachments/Investing%20platform%20marketplace.pdf",
+        "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
         "id": "jguTNgbqhGZG",
         "size": 1414220,
         "type": "application/pdf",
@@ -505,7 +505,7 @@ Parameter | Description
 `fields` | The fields and data of the Item you are adding to the Collection
 
 <aside class="information">
-To add Attachments, use the Attachment API to upload the attachment and set the response in the `attachments` property.
+To add Attachments, use the Attachment API to upload the attachment and set the attachment object in the `attachments` field property.
 </aside>
 
 ## Update Collection Item
@@ -536,7 +536,7 @@ curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf50
     "tags": ["Fin-tech", "Startups", "API"],
     "attachments": [
       {
-        "url": "https://onedb-uploads/attachments/Investing%20platform%20marketplace.pdf",
+        "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
         "id": "jguTNgbqhGZG",
         "size": 1414220,
         "type": "application/pdf",
@@ -576,7 +576,7 @@ curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf50
     "deleted": true
   }
 ```
-  
+
 ### HTTP Request
 
 `DELETE https://api.onedb.xyz/collections/:collection_id/items/:item_id`
@@ -587,3 +587,40 @@ Parameter | Description
 --------- | -----------
 `collection_id` | Name given to the collection
 `item_id` | Unique identifier for the Item you are querying
+
+# Attachments
+
+## Upload Attachment
+
+> Example Request
+
+```shell
+curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/attachments \
+  -H "Bearer: sk_yourapikey" \
+  -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
+  -F "file=Investing platform marketplace.pdf"
+```
+
+> Example Response
+
+```json
+{
+  "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
+  "id": "jguTNgbqhGZG",
+  "size": 1414220,
+  "type": "application/pdf",
+  "file_name": "Investing platform marketplace.pdf"
+}
+```
+
+### HTTP Request
+
+`POST https://api.onedb.xyz/:collection_id/attachments`
+
+**ARGUMENTS**
+
+Parameter | Description
+--------- | -----------
+`collection_id` | Name given to the collection
+
+To upload a new attachment, set this attachment object to the corresponding item's field in a POST or PUT request. In response, only id, url, and filename are always returned. Other attachment properties may not be included.
