@@ -680,3 +680,95 @@ Parameter | Description
 `collection_id` | Name given to the collection
 
 To upload a new attachment, set this attachment object to the corresponding item's field in a POST or PUT request. In response, only id, url, and filename are always returned. Other attachment properties may not be included.
+
+# Batch Requests
+
+The batch API makes it possible to perform many create, update, delete, get operations in a single API call. There is a limit of 50 items in a batch requests.
+
+> Example Request
+
+```shell
+curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/batch \
+  -H "Bearer: sk_yourapikey" \
+  -H "Content-Type: application/json" \
+   -d $'{
+     "items": [
+       {
+         "action": "update",
+         "id": "829b3c8d-1fad-5fbb-8b54-e1e6528ab777",
+         "fields": {
+           "title": "Three Years of Building Investing Products — Lessons Updated"
+         }
+       },
+       {
+          "action": "get",
+          "id": "48f990f0-fd66-592e-9f5d-094bc2862ebd",
+       }
+     ]
+    }'
+```
+
+> Example Response
+
+```json
+{
+  "items": [
+    {
+      "action": "update",
+      "id": "829b3c8d-1fad-5fbb-8b54-e1e6528ab777",
+      "result": "success",
+      "updated_at": "2019-10-28T21:42:38.929Z",
+      "created_at": "2016-10-24T19:41:48.349Z",
+      "fields": {
+        "title": "Three Years of Building Investing Products — Lessons Updated",
+        "body": "<p>The current and future of investing platforms.</p>",
+        "tags": ["Fin-tech", "Startups", "API"],
+        "attachments": [
+          {
+            "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
+            "id": "jguTNgbqhGZG",
+            "size": 1414220,
+            "type": "application/pdf",
+            "file_name": "Investing platform marketplace.pdf"
+          }
+        ],
+        "author_id": "38bc19cf-10ce-42b5-a4b0-54308bc54303"
+      }
+    },
+    {
+      "action": "get",
+      "id": "48f990f0-fd66-592e-9f5d-094bc2862ebd",
+      "result": "success",
+      "updated_at": "2019-10-24T19:42:00.799Z",
+      "created_at": "2019-10-24T19:42:00.777Z",
+      "fields": {
+        "title": "16 Business Models for Your Next Company",
+        "body": "<p>The business model is an important decision that will have a significant impact on your profitability. It can differentiate you from competitors and give you an advantage over them. Your competitors can’t easily change their business model to match yours. Choose wisely.</p>",
+        "tags": ["Entrepreneurship", "Business Models", "Sales"],
+        "author_id": "38bc19cf-10ce-42b5-a4b0-54308bc54303"
+      }
+    }
+  ]
+}
+```
+
+### Batch Request
+
+`POST https://api.onedb.xyz/collections/:collection_id/batch`
+
+**ARGUMENTS**
+
+Parameter | Description
+--------- | -----------
+`collection_id` | Name given to the collection
+`action` *required* | Operation to perform for the Item in the batch request
+`fields` *required (create, update)* | The fields and data of the Item for create or update operation
+
+### Batch Response
+
+Parameter | Description
+--------- | -----------
+`items` | Name given to the collection
+`action` | Operation to perform for the Item in the batch request
+`result` | Result of the operation `success` or `error_code`. See the errors section.
+`fields` (not returned for delete action)| The fields and data of the Item
