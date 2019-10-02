@@ -14,7 +14,15 @@ toc_footers:
 https://api.onedb.xyz
 ```
 
-Welcome to OneDB! This API reference provides information on available endpoints and how to interact with it.
+Welcome to OneDB!
+
+Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're chasing for performance optimizations or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
+
+This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through open standards REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
+
+Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security, and fully managed database.
+
+This API reference provides information on available endpoints and how to interact with it.
 
 The OneDB API is organized around [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer). Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.
 
@@ -35,18 +43,17 @@ $ curl https://api.onedb.xyz/account \
   -H "Authorization: your_api_key"
 ```
 
-Authentication is done via the API key which you can find in your account settings. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
+Authentication is done via the API key which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
 
 Test mode secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_. Alternatively, you can use restricted API keys for granular permissions.
 
 Authentication to the API is performed via [HTTP Basic Auth](http://en.wikipedia.org/wiki/Basic_access_authentication). Provide your API key as the basic auth username value. You do not need to provide a password.
 
-If you need to authenticate via bearer auth (e.g., for a cross-origin request), use `-H "Authorization: Bearer sk_test_8fD39MqLyjWBarjtP1zdp7bc" instead of -u sk_test_8fD39MqLyjWBarjtP1zdp7bc.`
+If you need to authenticate via bearer auth (e.g., for a cross-origin request), use `-H "Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"`
 
 ```shell
-curl -X GET https://api.onedb.xyz/account \
-  -u sk_test_4eC39HqLyjWDarjtT1zdp7dc: \
-  # The colon prevents curl from asking for a password.
+curl -X GET https://api.onedb.xyz/accounts/193954b0-0ae8-5db7-b640-8110afe56438 \
+  -H "Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"
 ```
 
 All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.
