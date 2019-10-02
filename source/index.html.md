@@ -110,6 +110,92 @@ not_found | Resource was not found.
 
 The OneDB API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.
 
+# Accounts
+
+Account API endpoints for sign up and getting your account statistics.
+
+## Sign up
+
+> Example Request
+
+```shell
+curl -X POST https://api.onedb.xyz/accounts \
+  -H "Content-Type: application/json" \
+   -d $'{
+      "first_name": "John",
+      "last_name": "Smith",
+      "company": "Sunrise, Inc",
+      "email": "john@sunrise.com",
+      "invite_code": "xVB20ljk"
+    }'
+```
+> Example Response
+
+```json
+{
+  "id": "193954b0-0ae8-5db7-b640-8110afe56438",
+  "first_name": "John",
+  "last_name": "Smith",
+  "company": "Sunrise, Inc",
+  "email": "john@sunrise.com",
+  "status": "pending"
+}
+```
+
+An account code is send to the associated account. Next step: verify the account.
+
+### HTTP Request
+
+`POST https://api.onedb.xyz/accounts`
+
+**ARGUMENTS**
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`first_name` *required* | string | First Name
+`last_name` *required* | string | Last Name
+`company` *required* | string | Name of the company
+`email` *required* | string | Email address associated with the account.
+`invite_code` *required* | string | Required while we're in private beta
+
+## Activate
+
+```shell
+curl -X PUT https://api.onedb.xyz/accounts/193954b0-0ae8-5db7-b640-8110afe56438/activate \
+  -H "Content-Type: application/json" \
+   -d $'{
+      "code": "763549",
+  }'
+```
+> Example Response
+
+```json
+{
+  "id": "193954b0-0ae8-5db7-b640-8110afe56438",
+  "first_name": "John",
+  "last_name": "Smith",
+  "company": "Sunrise, Inc",
+  "email": "john@sunrise.com",
+  "status": "activated",
+  "test_app_id": "ai_test_*",
+  "test_app_secret": "sk_test_*",
+  "live_app_id": "ai_live_*",
+  "live_app_secret": "sk_live_*"
+}
+```
+
+### HTTP Request
+
+`POST https://api.onedb.xyz/accounts/:account_id/activate`
+
+**ARGUMENTS**
+
+Parameter | Type | Description
+--------- | ---- | -----------
+`code` *required* | string | Code sent to the account email.
+
+Once your account is activated, you can start using the APIs using your app credentials
+
 # Collections
 
 The collections API lets you group Items and define the schema or structure of the custom data stored in those Items. Collections can also be think of as a table in traditional databases.
@@ -118,7 +204,7 @@ The collections API lets you group Items and define the schema or structure of t
 
 ```shell
 curl -X POST https://api.onedb.xyz/collections \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
    -d $'{
       "name": "Posts",
@@ -190,7 +276,7 @@ Parameter | Type | Description
 
 ```shell
 curl -X GET https://api.onedb.xyz/collections \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -230,7 +316,7 @@ Parameter | Type | Description
 
 ```shell
 curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025 \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -328,7 +414,7 @@ FIELD	| TYPE | DESCRIPTION
 
 ```shell
 curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -401,7 +487,7 @@ Parameter | Type | Description
 
 ```shell
 curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items?q=title:business+model  \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -456,7 +542,7 @@ Parameter | Type | Description
 
 ```shell
 curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -505,7 +591,7 @@ In attachment objects included in the retrieved item (attachments), only id, url
 
 ```shell
 curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
    -d $'{
       "fields": {
@@ -570,7 +656,7 @@ To add Attachments, use the Attachment API to upload the attachment and set the 
 
 ```shell
 curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
    -d $'{
       "fields": {
@@ -622,7 +708,7 @@ Parameter | Description
 
 ```shell
 curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
 ```
 
 > Example Response
@@ -689,7 +775,7 @@ The batch API makes it possible to perform many create, update, delete, get oper
 
 ```shell
 curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/batch \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: base64(app_id:app_secret)" \
   -H "Content-Type: application/json" \
    -d $'{
      "items": [
@@ -772,3 +858,17 @@ Parameter | Description
 `action` | Operation to perform for the Item in the batch request
 `result` | Result of the operation `success` or `error_code`. See the errors section.
 `fields` (not returned for delete action)| The fields and data of the Item
+
+# Backups
+
+## Backup schedule
+
+Coming soon.
+
+## List Backups
+
+Coming soon.
+
+## Download a backup
+
+Coming soon.
