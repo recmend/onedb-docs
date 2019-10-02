@@ -18,7 +18,7 @@ Welcome to OneDB!
 
 Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're chasing for performance optimizations or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
 
-This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through open standards REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
+This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
 
 Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security, and fully managed database.
 
@@ -879,3 +879,16 @@ Coming soon.
 ## Download a backup
 
 Coming soon.
+
+# Security
+
+Your customers data is in good hands.
+
+* The data on rest is encrypted with 256-bit encryption
+* All API requests should be over SSL
+* All data access API endpoints are authenticated
+* Our Servers are in a private VPC
+* We implement Least access privilege for every employee
+* Every access to our systems is monitored and logged
+* All commands run on our servers are logged
+* We enforce 2FA for all 3rd party services
