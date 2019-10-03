@@ -16,7 +16,7 @@ https://api.onedb.xyz
 
 Welcome to OneDB!
 
-Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're chasing for performance optimizations or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
+Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're always optimizing query performance or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
 
 This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
 
@@ -745,7 +745,7 @@ Parameter | Description
 
 ```shell
 curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/attachments \
-  -H "Bearer: sk_yourapikey" \
+  -H "Authorization Bearer: sk_yourapikey" \
   -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" \
   -F "file=Investing platform marketplace.pdf"
 ```
@@ -868,17 +868,82 @@ Parameter | Description
 
 # Backups
 
+OneDB creates and saves automated backups of your data. You can also back up your data manually, by setting the backup schedule. Each backup file contains the full data. Only the last 30 backup files are retained.
+
 ## Backup schedule
 
-Coming soon.
+> Example Request
+
+```shell
+curl -X POST https://api.onedb.xyz/backups \
+  -H "Authorization Bearer: sk_yourapikey" \
+  -d $'{
+    "schedule": "daily"
+  }'
+```
+
+> Example Response
+
+```json
+{
+  "schedule": "daily"
+}
+```
+
+### HTTP Request
+
+`POST https://api.onedb.xyz/backups`
+
+**ARGUMENTS**
+
+Parameter | Description
+--------- | -----------
+`schedule` | Backup schedule in increments of 5m. Minimum backup window is `every 5m`.
+
+Automated backups occur daily during the preferred backup window. If you don't specify a preferred backup schedule, OneDB assigns a default daily backup window.
 
 ## List Backups
 
-Coming soon.
+> Example Request
+
+```shell
+curl -X GET https://api.onedb.xyz/backups \
+  -H "Authorization Bearer: sk_yourapikey" \
+```
+
+> Example Response
+
+```json
+{
+  "backups": [
+    {
+      "id": "NEDW6VOJ45en",
+      "url": "https://api.onedb.xyz/backups/NEDW6VOJ45en",
+      "timestamp": "2019-10-28T21:42:38.929Z"
+    },
+    ...
+  ],
+}
+```
+
+### HTTP Request
+
+`GET https://api.onedb.xyz/backups`
 
 ## Download a backup
 
-Coming soon.
+> Example Request
+
+```shell
+curl -X GET https://api.onedb.xyz/backups/NEDW6VOJ45en \
+  -H "Authorization Bearer: sk_yourapikey" \
+```
+
+### HTTP Request
+
+`GET https://api.onedb.xyz/backups/NEDW6VOJ45en`
+
+Downloads backup-NEDW6VOJ45en.json file.
 
 # Security
 
