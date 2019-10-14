@@ -1,0 +1,1603 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>OneDB API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">curl</a>
+        </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#api-keys" class="toc-h1 toc-link" data-title="API Keys">API Keys</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-status-codes" class="toc-h2 toc-link" data-title="HTTP Status codes">HTTP Status codes</a>
+                  </li>
+                  <li>
+                    <a href="#error-types" class="toc-h2 toc-link" data-title="Error types">Error types</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#rate-limiting" class="toc-h1 toc-link" data-title="Rate limiting">Rate limiting</a>
+          </li>
+          <li>
+            <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sign-up" class="toc-h2 toc-link" data-title="Sign up">Sign up</a>
+                  </li>
+                  <li>
+                    <a href="#activate" class="toc-h2 toc-link" data-title="Activate">Activate</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#collections" class="toc-h1 toc-link" data-title="Collections">Collections</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request-3" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+                  <li>
+                    <a href="#list-collections" class="toc-h2 toc-link" data-title="List Collections">List Collections</a>
+                  </li>
+                  <li>
+                    <a href="#get-collection-with-full-schema" class="toc-h2 toc-link" data-title="Get Collection with Full Schema">Get Collection with Full Schema</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#fields" class="toc-h1 toc-link" data-title="Fields">Fields</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#schema" class="toc-h2 toc-link" data-title="Schema">Schema</a>
+                  </li>
+                  <li>
+                    <a href="#field-types" class="toc-h2 toc-link" data-title="Field Types">Field Types</a>
+                  </li>
+                  <li>
+                    <a href="#validations" class="toc-h2 toc-link" data-title="Validations">Validations</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#items" class="toc-h1 toc-link" data-title="Items">Items</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-items-for-a-collection" class="toc-h2 toc-link" data-title="Get All Items For a Collection">Get All Items For a Collection</a>
+                  </li>
+                  <li>
+                    <a href="#search-items-in-a-collection" class="toc-h2 toc-link" data-title="Search Items in a Collection">Search Items in a Collection</a>
+                  </li>
+                  <li>
+                    <a href="#get-single-item" class="toc-h2 toc-link" data-title="Get Single Item">Get Single Item</a>
+                  </li>
+                  <li>
+                    <a href="#create-new-collection-item" class="toc-h2 toc-link" data-title="Create New Collection Item">Create New Collection Item</a>
+                  </li>
+                  <li>
+                    <a href="#update-collection-item" class="toc-h2 toc-link" data-title="Update Collection Item">Update Collection Item</a>
+                  </li>
+                  <li>
+                    <a href="#remove-collection-item" class="toc-h2 toc-link" data-title="Remove Collection Item">Remove Collection Item</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#attachments" class="toc-h1 toc-link" data-title="Attachments">Attachments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#upload-attachment" class="toc-h2 toc-link" data-title="Upload Attachment">Upload Attachment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#batch-requests" class="toc-h1 toc-link" data-title="Batch Requests">Batch Requests</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#batch-request" class="toc-h2 toc-link" data-title="Batch Request">Batch Request</a>
+                  </li>
+                  <li>
+                    <a href="#batch-response" class="toc-h2 toc-link" data-title="Batch Response">Batch Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#backups" class="toc-h1 toc-link" data-title="Backups">Backups</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#backup-schedule" class="toc-h2 toc-link" data-title="Backup schedule">Backup schedule</a>
+                  </li>
+                  <li>
+                    <a href="#list-backups" class="toc-h2 toc-link" data-title="List Backups">List Backups</a>
+                  </li>
+                  <li>
+                    <a href="#download-a-backup" class="toc-h2 toc-link" data-title="Download a backup">Download a backup</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#security" class="toc-h1 toc-link" data-title="Security">Security</a>
+          </li>
+      </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1><pre class="highlight shell tab-shell"><code>https://api.onedb.xyz
+</code></pre>
+<p>Welcome to OneDB!</p>
+
+<p>Today, when you&#39;re building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you&#39;re always optimizing query performance or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.</p>
+
+<p>This is why we&#39;re building OneDB, the modern database for the cloud. OneDB doesn&#39;t lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.</p>
+
+<p>Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security, and fully managed database.</p>
+
+<p>This API reference provides information on available endpoints and how to interact with it.</p>
+
+<p>The OneDB API is organized around <a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">REST</a>. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. All requests should be over SSL. All request and response bodies, including errors are encoded in JSON.</p>
+<h1 id='api-keys'>API Keys</h1>
+<p>OneDB authenticates your API requests using your account’s API keys. If you do not include your key when making an API request, or use one that is incorrect or outdated, OneDB returns an error.</p>
+
+<p>The API key should be kept confidential and only stored on your own servers. Your account’s API key can perform any API request to OneDB without restriction.</p>
+
+<p>Each account has a total of two keys: a key pair for test mode and live mode.</p>
+<h1 id='authentication'>Authentication</h1>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>curl https://api.onedb.xyz/account <span class="se">\</span>
+  -H <span class="s2">"Authorization: your_api_key"</span>
+</code></pre>
+<p>Authentication is done via the API key which you can find in your accounts settings endpoint. Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.</p>
+
+<p>Test mode secret keys have the prefix sk_test_ and live mode secret keys have the prefix sk_live_. Alternatively, you can use restricted API keys for granular permissions.</p>
+
+<p>Authentication to the API is performed via <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">HTTP Basic Auth</a>. Provide your API key as the basic auth username value. You do not need to provide a password.</p>
+
+<p>If you need to authenticate via bearer auth (e.g., for a cross-origin request), use <code>-H &quot;Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)&quot;</code></p>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/accounts/193954b0-0ae8-5db7-b640-8110afe56438 <span class="se">\</span>
+  -H <span class="s2">"Authorization: Bearer base64(ai_test_app_id:sk_test_8fD39MqLyjWBarjtP1zdp7bc)"</span>
+</code></pre>
+<p>All API requests must be made over HTTPS. Calls made over plain HTTP will fail. API requests without authentication will also fail.</p>
+<h1 id='errors'>Errors</h1>
+<p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
+
+<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with OneDB&#39;s servers (these are rare).</p>
+<h2 id='http-status-codes'>HTTP Status codes</h2>
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Title</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>200</td>
+<td>OK</td>
+<td>Everything worked as expected.</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>The request was unacceptable, often due to missing a required parameter.</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>No valid API key provided.</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Request Failed</td>
+<td>The parameters were valid but the request failed.</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>The requested resource doesn&#39;t exist.</td>
+</tr>
+<tr>
+<td>409</td>
+<td>Conflict</td>
+<td>The request conflicts with another request (perhaps due to using the same idempotent key).</td>
+</tr>
+<tr>
+<td>429</td>
+<td>Too Many Request</td>
+<td>Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</td>
+</tr>
+<tr>
+<td>500,502,503,504</td>
+<td>Server Errors</td>
+<td>Something went wrong on OneDB&#39;s end. (These are rare.)</td>
+</tr>
+</tbody></table>
+<h2 id='error-types'>Error types</h2>
+<blockquote>
+<p>Example error response.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"invalid_request"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name is required"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>api_connection</td>
+<td>Failure to connect to OneDB&#39;s API.</td>
+</tr>
+<tr>
+<td>api_error</td>
+<td>API errors cover any other type of problem (e.g., a temporary problem with our servers), and are extremely uncommon.</td>
+</tr>
+<tr>
+<td>authentication_error</td>
+<td>Failure to properly authenticate yourself in the request.</td>
+</tr>
+<tr>
+<td>invalid_request</td>
+<td>Invalid request errors arise when your request has invalid parameters.</td>
+</tr>
+<tr>
+<td>rate_limit_exceeded</td>
+<td>Too many requests hit the API too quickly.</td>
+</tr>
+<tr>
+<td>validation_error</td>
+<td>Unable to validate POST/PUT</td>
+</tr>
+<tr>
+<td>not_found</td>
+<td>Resource was not found.</td>
+</tr>
+</tbody></table>
+<h1 id='rate-limiting'>Rate limiting</h1>
+<blockquote>
+<p>Example rate limit error response.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rate_limit_exceeded"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Too many requests"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The OneDB API is rate limited to prevent abuse that would degrade our ability to maintain consistent API performance for all users. By default, each API key or app is rate limited at 10,000 requests per hour. If your requests are being rate limited, HTTP response code 429 will be returned with an rate_limit_exceeded error.</p>
+<h1 id='accounts'>Accounts</h1>
+<p>Account API endpoints for sign up and getting your account statistics.</p>
+<h2 id='sign-up'>Sign up</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.onedb.xyz/accounts <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+      "first_name": "John",
+      "last_name": "Smith",
+      "company": "Sunrise, Inc",
+      "email": "john@sunrise.com",
+      "invite_code": "xVB20ljk"
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"193954b0-0ae8-5db7-b640-8110afe56438"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunrise, Inc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@sunrise.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>An account code is send to the associated account. Next step: verify the account.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/accounts</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>first_name</code> <em>required</em></td>
+<td>string</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td><code>last_name</code> <em>required</em></td>
+<td>string</td>
+<td>Last Name</td>
+</tr>
+<tr>
+<td><code>company</code> <em>required</em></td>
+<td>string</td>
+<td>Name of the company</td>
+</tr>
+<tr>
+<td><code>email</code> <em>required</em></td>
+<td>string</td>
+<td>Email address associated with the account.</td>
+</tr>
+<tr>
+<td><code>invite_code</code> <em>required</em></td>
+<td>string</td>
+<td>Required while we&#39;re in private beta</td>
+</tr>
+</tbody></table>
+<h2 id='activate'>Activate</h2><pre class="highlight shell tab-shell"><code>curl -X PUT https://api.onedb.xyz/accounts/193954b0-0ae8-5db7-b640-8110afe56438/activate <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+      "code": "763549",
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"193954b0-0ae8-5db7-b640-8110afe56438"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Smith"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sunrise, Inc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"john@sunrise.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"activated"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"test_app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ai_test_*"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"test_app_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sk_test_*"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"live_app_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ai_live_*"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"live_app_secret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sk_live_*"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/accounts/:account_id/activate</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>code</code> <em>required</em></td>
+<td>string</td>
+<td>Code sent to the account email.</td>
+</tr>
+</tbody></table>
+
+<p>Once your account is activated, you can start using the APIs using your app credentials</p>
+<h1 id='collections'>Collections</h1>
+<p>The collections API lets you group Items and define the schema or structure of the custom data stored in those Items. Collections can also be think of as a table in traditional databases.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.onedb.xyz/collections <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+      "name": "Posts",
+      "fields": [
+        {
+          "required": true,
+          "type": "Text",
+          "name": "Title",
+          "validations": {
+            "max_length": 128
+          }
+        },
+        {
+          "required": false,
+          "type": "LongText",
+          "name": "Post Body"
+        },
+        ...
+      ]
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fe54303-10ce-42b5-a4b0-38bc19cf5025"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posts"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posts"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:38.929Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"validations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"searchable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LongText"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post_body"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post Body"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"searchable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/collections</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>searchable</code> <em>optional</em></td>
+<td>boolean</td>
+<td>If searching/filtering by this field is enabled. If enabled, search index is created, and all Items in this collection are indexed based on their Field type.</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>array</td>
+<td>See Full Fields Section</td>
+</tr>
+</tbody></table>
+<h2 id='list-collections'>List Collections</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/collections <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fe54303-10ce-42b5-a4b0-38bc19cf5025"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:38.929Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="p">,</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8bc54303-10ce-42b5-a4b0-38bc19cf5430"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.799Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.777Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Authors"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"author"</span><span class="p">,</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/collections</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>q</code> <em>optional</em></td>
+<td>string</td>
+<td>search query string to filter collection by names</td>
+</tr>
+</tbody></table>
+<h2 id='get-collection-with-full-schema'>Get Collection with Full Schema</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025 <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6fe54303-10ce-42b5-a4b0-38bc19cf5025"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"validations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"max_length"</span><span class="p">:</span><span class="w"> </span><span class="mi">128</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LongText"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"post_body"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Post Body"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/collections/:collection_id</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the collection</td>
+</tr>
+</tbody></table>
+<h1 id='fields'>Fields</h1>
+<p>Fields are what define the schema of a Collection - and ultimately all your dynamic data. Every field has a Field Type describing what kind of field it is. Each field also may have a validations object which defines all of the validations which have been set for the given field. The “TYPE” column defines the data type of the validations.</p>
+<h2 id='schema'>Schema</h2>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>name</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the field</td>
+</tr>
+<tr>
+<td><code>type</code> <em>required</em></td>
+<td>string</td>
+<td>See Field Types below</td>
+</tr>
+<tr>
+<td><code>validations</code> <em>optional</em></td>
+<td>array</td>
+<td>See Validations Section</td>
+</tr>
+</tbody></table>
+<h2 id='field-types'>Field Types</h2>
+<table><thead>
+<tr>
+<th>Field Type</th>
+<th>Data Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Bool</code></td>
+<td>boolean</td>
+<td>yes/no switch</td>
+</tr>
+<tr>
+<td><code>Date</code></td>
+<td>date</td>
+<td>Date field used to display any combination of month, day, year, and time</td>
+</tr>
+<tr>
+<td><code>StringSet</code></td>
+<td>array</td>
+<td>Field containing multiple unique strings</td>
+</tr>
+<tr>
+<td><code>Link</code></td>
+<td>string</td>
+<td>URL field where the value can be used as a link destination</td>
+</tr>
+<tr>
+<td><code>Number</code></td>
+<td>number</td>
+<td>Field for numbers (int or float)</td>
+</tr>
+<tr>
+<td><code>Text</code></td>
+<td>string</td>
+<td>A single line of text</td>
+</tr>
+<tr>
+<td><code>LongText</code></td>
+<td>string</td>
+<td>Multiple lines of text</td>
+</tr>
+<tr>
+<td><code>SingleSelect</code></td>
+<td>string</td>
+<td>Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.</td>
+</tr>
+<tr>
+<td><code>MultipleSelect</code></td>
+<td>array of strings</td>
+<td>Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error</td>
+</tr>
+<tr>
+<td><code>Attachment</code></td>
+<td>object</td>
+<td>Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.</td>
+</tr>
+</tbody></table>
+<h2 id='validations'>Validations</h2>
+<p>Each field also may have a validations object which defines all of the validations which have been set for the given field. The “TYPE” column defines the data type of the validations.</p>
+
+<table><thead>
+<tr>
+<th>VALIDATION NAME</th>
+<th>TYPE</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MaxLength</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>MinLength</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>Minimum</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>Maximum</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>MaxSize</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>Options</code></td>
+<td>number</td>
+</tr>
+<tr>
+<td><code>Format</code></td>
+<td>number</td>
+</tr>
+</tbody></table>
+<h1 id='items'>Items</h1>
+<p>The fields that define the schema for a given Item are based on the Collection that Item belongs to. Beyond the user defined fields, there are a handful of additional fields that are automatically created for all items:</p>
+
+<table><thead>
+<tr>
+<th>FIELD</th>
+<th>TYPE</th>
+<th>DESCRIPTION</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td>string</td>
+<td>Unique identifier for the Item</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td>date</td>
+<td>Date Item was created</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td>date</td>
+<td>Date Item was last updated</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-items-for-a-collection'>Get All Items For a Collection</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829b3c8d-1fad-5fbb-8b54-e1e6528ab777"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:38.929Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Years of Building Investing Products — Lessons Learned"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Fin-tech"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Startups"</span><span class="p">,</span><span class="w"> </span><span class="s2">"API"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48f990f0-fd66-592e-9f5d-094bc2862ebd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.799Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.777Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16 Business Models for Your Next Company"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The business model is an important decision that will have a significant impact on your profitability. It can differentiate you from competitors and give you an advantage over them. Your competitors can’t easily change their business model to match yours. Choose wisely.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Entrepreneurship"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Business Models"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJvcmdhbml6YXRpb25faWQiOnsiQiI6bnVsbCwiQk9PTCI6bnVsbCwiQlMiOm51bGwsIkwiOm51bGwsIk0iOm51bGwsIk4iOm51bGwsIk5TIjpudWxsLCJOVUxMIjpudWxsZGI0ZWIwMDctYmUWJkNjAtN2M5NzI0NGNkZWFhIiwiU1MiOm51bGx9LCJ1c2VyX2lkIjp7IkIiOm51bGwsIkJPT0wiOm51bGwsIkJTIjpudWxsLCJMIjpudWxsLCJNIjpudWxsLCJOIjpudWxsLCJOUyI6bnVsbCwiTlVMTCI6bnVsbCwiUyI6Ijc4OTU5YjMwLThjYTQtOS1iMzdmLTNjMTVjMmQzYTYwMiIsIlNTIjpudWxsfX0="</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/collections/:collection_id/items</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>limit</code> <em>optional</em></td>
+<td>number</td>
+<td>Maximum number of items to be returned. Default limit: 10, Max limit: 100</td>
+</tr>
+<tr>
+<td><code>fields</code> <em>optional</em></td>
+<td>string</td>
+<td>comma delimited list of fields, e.g. fields=title,author_id</td>
+</tr>
+<tr>
+<td><code>page_token</code> <em>optional</em></td>
+<td>string</td>
+<td>Page token used for pagination if collection has more than <code>limit</code> items.</td>
+</tr>
+</tbody></table>
+
+<p><strong>RESPONSE</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items</code></td>
+<td>array</td>
+<td>List of Items within this collection</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>Number of Items returned</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>number</td>
+<td>The limit specified in the request (default: 10)</td>
+</tr>
+<tr>
+<td><code>page_token</code></td>
+<td>string</td>
+<td>The page token specified for pagination. Page token is only returned if there are more than <code>limit</code> items.</td>
+</tr>
+</tbody></table>
+<h2 id='search-items-in-a-collection'>Search Items in a Collection</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items?q<span class="o">=</span>title:business+model  <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48f990f0-fd66-592e-9f5d-094bc2862ebd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.799Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.777Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16 Business Models for Your Next Company"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The business model is an important decision that will have a significant impact on your profitability. It can differentiate you from competitors and give you an advantage over them. Your competitors can’t easily change their business model to match yours. Choose wisely.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Entrepreneurship"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Business Models"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"page_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJvcmdhbml6YXRpb25faWQiOnsiQiI6bnVsbCwiQk9PTCI6bnVsbCwiQlMiOm51bGwsIkwiOm51bGwsIk0iOm51bGwsIk4iOm51bGwsIk5TIjpudWxsLCJOVUxMIjpudWxsZGI0ZWIwMDctYmUWJkNjAtN2M5NzI0NGNkZWFhIiwiU1MiOm51bGx9LCJ1c2VyX2lkIjp7IkIiOm51bGwsIkJPT0wiOm51bGwsIkJTIjpudWxsLCJMIjpudWxsLCJNIjpudWxsLCJOIjpudWxsLCJOUyI6bnVsbCwiTlVMTCI6bnVsbCwiUyI6Ijc4OTU5YjMwLThjYTQtOS1iMzdmLTNjMTVjMmQzYTYwMiIsIlNTIjpudWxsfX0="</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/collections/:collection_id/items</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>q</code> <em>required</em></td>
+<td>string</td>
+<td>Only returns items matching the specific query. e.g. <code>q=title:business+model author_id:38bc19cf-10ce-42b5-a4b0-54308bc54303</code></td>
+</tr>
+<tr>
+<td><code>limit</code> <em>optional</em></td>
+<td>number</td>
+<td>Maximum number of items to be returned. Default limit: 10, Max limit: 100</td>
+</tr>
+<tr>
+<td><code>fields</code> <em>optional</em></td>
+<td>string</td>
+<td>comma delimited list of fields, e.g. fields=title,author_id</td>
+</tr>
+<tr>
+<td><code>page_token</code> <em>optional</em></td>
+<td>string</td>
+<td>Page token used for pagination if collection has more than <code>limit</code> items.</td>
+</tr>
+</tbody></table>
+
+<p><strong>RESPONSE</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items</code></td>
+<td>array</td>
+<td>List of Items within this collection</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>number</td>
+<td>Number of Items returned</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td>number</td>
+<td>The limit specified in the request (default: 10)</td>
+</tr>
+<tr>
+<td><code>page_token</code></td>
+<td>string</td>
+<td>The page token specified for pagination. Page token is only returned if there are more than <code>limit</code> items.</td>
+</tr>
+</tbody></table>
+<h2 id='get-single-item'>Get Single Item</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829b3c8d-1fad-5fbb-8b54-e1e6528ab777"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:38.929Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Years of Building Investing Products — Lessons Learned"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Fin-tech"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Startups"</span><span class="p">,</span><span class="w"> </span><span class="s2">"API"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/collections/:collection_id/items/:item_id</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code> <em>required</em></td>
+<td>string</td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>item_id</code> <em>required</em></td>
+<td>string</td>
+<td>Unique identifier for the Item you are querying</td>
+</tr>
+</tbody></table>
+
+<aside class="information">
+In attachment objects included in the retrieved item (attachments), only id, url, and filename are always returned. Other attachment properties may not be included.
+</aside>
+<h2 id='create-new-collection-item'>Create New Collection Item</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+      "fields": {
+        "title": "Three Years of Building Investing Products — Lessons Learned",
+        "body": "&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;",
+        "tags": ["Fin-tech", "Startups", "API"],
+        "attachments": {
+          "url": "https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf",
+          "id": "jguTNgbqhGZG",
+          "size": 1414220,
+          "type": "application/pdf",
+          "file_name": "Investing platform marketplace.pdf"
+        },
+        "author_id": "38bc19cf-10ce-42b5-a4b0-54308bc54303"
+      }
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829b3c8d-1fad-5fbb-8b54-e1e6528ab777"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:38.929Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Years of Building Investing Products — Lessons Learned"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Fin-tech"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Startups"</span><span class="p">,</span><span class="w"> </span><span class="s2">"API"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/collections/:collection_id/items</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code></td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>The fields and data of the Item you are adding to the Collection</td>
+</tr>
+</tbody></table>
+
+<aside class="information">
+To add Attachments, use the Attachment API to upload the attachment and set the attachment object in the `attachments` field property.
+</aside>
+<h2 id='update-collection-item'>Update Collection Item</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+      "fields": {
+        "title": "Three Years of Building Investing Products — Lessons Updated",
+      }
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829b3c8d-1fad-5fbb-8b54-e1e6528ab777"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-28T21:42:38.929Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Years of Building Investing Products — Lessons Updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Fin-tech"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Startups"</span><span class="p">,</span><span class="w"> </span><span class="s2">"API"</span><span class="p">],</span><span class="w">
+    </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-10'>HTTP Request</h3>
+<p><code>PUT https://api.onedb.xyz/collections/:collection_id/items/:item_id</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code></td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td>Unique identifier for the Item you are querying</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td>The fields and data of the Item you are updating</td>
+</tr>
+</tbody></table>
+<h2 id='remove-collection-item'>Remove Collection Item</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/items/829b3c8d-1fad-5fbb-8b54-e1e6528ab777 <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-11'>HTTP Request</h3>
+<p><code>DELETE https://api.onedb.xyz/collections/:collection_id/items/:item_id</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code></td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>item_id</code></td>
+<td>Unique identifier for the Item you are querying</td>
+</tr>
+</tbody></table>
+<h1 id='attachments'>Attachments</h1><h2 id='upload-attachment'>Upload Attachment</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/attachments <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: sk_yourapikey"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"</span> <span class="se">\</span>
+  -F <span class="s2">"file=Investing platform marketplace.pdf"</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-12'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/:collection_id/attachments</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code></td>
+<td>Name given to the collection</td>
+</tr>
+</tbody></table>
+
+<p>To upload a new attachment, set this attachment object to the corresponding item&#39;s field in a POST or PUT request. In response, only id, url, and filename are always returned. Other attachment properties may not be included.</p>
+<h1 id='batch-requests'>Batch Requests</h1>
+<p>The batch API makes it possible to perform many create, update, delete, get operations in a single API call. There is a limit of 50 items in a batch requests.</p>
+
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X PUT https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf5025/batch <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: base64(app_id:app_secret)"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+   -d <span class="s1">$'{
+     "items": [
+       {
+         "action": "update",
+         "id": "829b3c8d-1fad-5fbb-8b54-e1e6528ab777",
+         "fields": {
+           "title": "Three Years of Building Investing Products — Lessons Updated"
+         }
+       },
+       {
+          "action": "get",
+          "id": "48f990f0-fd66-592e-9f5d-094bc2862ebd",
+       }
+     ]
+    }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"update"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"829b3c8d-1fad-5fbb-8b54-e1e6528ab777"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-28T21:42:38.929Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-10-24T19:41:48.349Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Three Years of Building Investing Products — Lessons Updated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The current and future of investing platforms.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Fin-tech"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Startups"</span><span class="p">,</span><span class="w"> </span><span class="s2">"API"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"attachments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://onedb-uploads/attachments/jguTNgbqhGZG/Investing%20platform%20marketplace.pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jguTNgbqhGZG"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"size"</span><span class="p">:</span><span class="w"> </span><span class="mi">1414220</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"file_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Investing platform marketplace.pdf"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"get"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48f990f0-fd66-592e-9f5d-094bc2862ebd"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.799Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-24T19:42:00.777Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16 Business Models for Your Next Company"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;p&gt;The business model is an important decision that will have a significant impact on your profitability. It can differentiate you from competitors and give you an advantage over them. Your competitors can’t easily change their business model to match yours. Choose wisely.&lt;/p&gt;"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Entrepreneurship"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Business Models"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Sales"</span><span class="p">],</span><span class="w">
+        </span><span class="s2">"author_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38bc19cf-10ce-42b5-a4b0-54308bc54303"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='batch-request'>Batch Request</h3>
+<p><code>POST https://api.onedb.xyz/collections/:collection_id/batch</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>collection_id</code></td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>action</code> <em>required</em></td>
+<td>Operation to perform for the Item in the batch request</td>
+</tr>
+<tr>
+<td><code>fields</code> <em>required (create, update)</em></td>
+<td>The fields and data of the Item for create or update operation</td>
+</tr>
+</tbody></table>
+<h3 id='batch-response'>Batch Response</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>items</code></td>
+<td>Name given to the collection</td>
+</tr>
+<tr>
+<td><code>action</code></td>
+<td>Operation to perform for the Item in the batch request</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td>Result of the operation <code>success</code> or <code>error_code</code>. See the errors section.</td>
+</tr>
+<tr>
+<td><code>fields</code> (not returned for delete action)</td>
+<td>The fields and data of the Item</td>
+</tr>
+</tbody></table>
+<h1 id='backups'>Backups</h1>
+<p>OneDB creates and saves automated backups of your data. You can also back up your data manually, by setting the backup schedule. Each backup file contains the full data. Only the last 30 backup files are retained.</p>
+<h2 id='backup-schedule'>Backup schedule</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X POST https://api.onedb.xyz/backups <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: sk_yourapikey"</span> <span class="se">\</span>
+  -d <span class="s1">$'{
+    "schedule": "daily"
+  }'</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"schedule"</span><span class="p">:</span><span class="w"> </span><span class="s2">"daily"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-13'>HTTP Request</h3>
+<p><code>POST https://api.onedb.xyz/backups</code></p>
+
+<p><strong>ARGUMENTS</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>schedule</code></td>
+<td>Backup schedule in increments of 5m. Minimum backup window is <code>every 5m</code>.</td>
+</tr>
+</tbody></table>
+
+<p>Automated backups occur daily during the preferred backup window. If you don&#39;t specify a preferred backup schedule, OneDB assigns a default daily backup window.</p>
+<h2 id='list-backups'>List Backups</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/backups <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: sk_yourapikey"</span> <span class="se">\</span>
+</code></pre>
+<blockquote>
+<p>Example Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"backups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NEDW6VOJ45en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.onedb.xyz/backups/NEDW6VOJ45en"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-10-28T21:42:38.929Z"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-14'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/backups</code></p>
+<h2 id='download-a-backup'>Download a backup</h2>
+<blockquote>
+<p>Example Request</p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code>curl -X GET https://api.onedb.xyz/backups/NEDW6VOJ45en <span class="se">\</span>
+  -H <span class="s2">"Authorization Bearer: sk_yourapikey"</span> <span class="se">\</span>
+</code></pre><h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://api.onedb.xyz/backups/NEDW6VOJ45en</code></p>
+
+<p>Downloads backup-NEDW6VOJ45en.json file.</p>
+<h1 id='security'>Security</h1>
+<p>Your customers data is in good hands.</p>
+
+<ul>
+<li>The data on rest is encrypted with 256-bit encryption</li>
+<li>All API requests should be over SSL</li>
+<li>All data access API endpoints are authenticated</li>
+<li>Our Servers are in a private VPC</li>
+<li>We implement Least access privilege for every employee</li>
+<li>Every access to our systems is monitored and logged</li>
+<li>All commands run on our servers are logged</li>
+<li>We enforce 2FA for all 3rd party services</li>
+</ul>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">curl</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
