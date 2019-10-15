@@ -918,7 +918,7 @@ curl -X GET https://api.onedb.xyz/backups \
   "backups": [
     {
       "id": "NEDW6VOJ45en",
-      "url": "https://api.onedb.xyz/backups/NEDW6VOJ45en",
+      "url": "https://api.onedb.xyz/backups/NEDW6VOJ45en.gzip",
       "timestamp": "2019-10-28T21:42:38.929Z"
     },
     ...
@@ -935,15 +935,15 @@ curl -X GET https://api.onedb.xyz/backups \
 > Example Request
 
 ```shell
-curl -X GET https://api.onedb.xyz/backups/NEDW6VOJ45en \
+curl -X GET https://api.onedb.xyz/backups/NEDW6VOJ45en.gzip \
   -H "Authorization Bearer: sk_yourapikey" \
 ```
 
 ### HTTP Request
 
-`GET https://api.onedb.xyz/backups/NEDW6VOJ45en`
+`GET https://api.onedb.xyz/backups/NEDW6VOJ45en.gzip`
 
-Downloads backup-NEDW6VOJ45en.json file.
+Downloads backup-NEDW6VOJ45en.gzip file.
 
 # Security
 
