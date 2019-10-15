@@ -16,11 +16,11 @@ https://api.onedb.xyz
 
 Welcome to OneDB!
 
-Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're always optimizing query performance or start considering switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
+Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're always optimizing for query performance or consider switching to different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
 
 This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
 
-Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security, and fully managed database.
+Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security. A fully managed database.
 
 This API reference provides information on available endpoints and how to interact with it.
 
