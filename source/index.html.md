@@ -62,7 +62,7 @@ All API requests must be made over HTTPS. Calls made over plain HTTP will fail. 
 
 Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.
 
-In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with OneDB's servers (these are rare).
+In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted). Codes in the 5xx range indicate an error with OneDB's servers (these are rare).
 
 ## HTTP Status codes
 
@@ -381,29 +381,29 @@ Parameter | Type | Description
 
 Field Type | Data Type | Description
 ---------- | --------- | -----------
-`Bool` | boolean | yes/no switch
-`Date` | date | Date field used to display any combination of month, day, year, and time
-`StringSet` | array | Field containing multiple unique strings
-`Link` | string | URL field where the value can be used as a link destination
-`Number` | number | Field for numbers (int or float)
-`Text` | string | A single line of text
-`LongText` | string | Multiple lines of text
-`SingleSelect` | string | Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.
-`MultipleSelect` | array of strings | Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error
-`Attachment` | object | Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.
+`bool` | boolean | yes/no switch
+`date` | date | Date field used to display any combination of month, day, year, and time
+`set` | array | Field containing multiple unique strings
+`link` | string | URL field where the value can be used as a link destination
+`number` | number | Field for numbers (int or float)
+`text` | string | A single line of text
+`long_text` | string | Multiple lines of text
+`single_select` | string | Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.
+`multiple_select` | array of strings | Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error
+`attachment` | object | Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.
 
 ## Validations
 Each field also may have a validations object which defines all of the validations which have been set for the given field. The “TYPE” column defines the data type of the validations.
 
 VALIDATION NAME	| TYPE
 --------------- | ----
-`MaxLength` | number
-`MinLength` | number
-`Minimum` | number
-`Maximum` | number
-`MaxSize` | number
-`Options` | number
-`Format` | number
+`max_length` | number
+`min_length` | number
+`minimum` | number
+`maximum` | number
+`max_size` | number
+`options` | number
+`format` | number
 
 # Items
 
