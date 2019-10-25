@@ -381,7 +381,7 @@
 <h1 id='errors'>Errors</h1>
 <p>Our API returns standard HTTP success or error status codes. For errors, we will also include extra information about what went wrong encoded in the response as JSON. The various HTTP status codes we might return are listed below.</p>
 
-<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with OneDB&#39;s servers (these are rare).</p>
+<p>In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted). Codes in the 5xx range indicate an error with OneDB&#39;s servers (these are rare).</p>
 <h2 id='http-status-codes'>HTTP Status codes</h2>
 <table><thead>
 <tr>
@@ -816,52 +816,52 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>Bool</code></td>
+<td><code>bool</code></td>
 <td>boolean</td>
 <td>yes/no switch</td>
 </tr>
 <tr>
-<td><code>Date</code></td>
+<td><code>date</code></td>
 <td>date</td>
 <td>Date field used to display any combination of month, day, year, and time</td>
 </tr>
 <tr>
-<td><code>StringSet</code></td>
+<td><code>set</code></td>
 <td>array</td>
 <td>Field containing multiple unique strings</td>
 </tr>
 <tr>
-<td><code>Link</code></td>
+<td><code>link</code></td>
 <td>string</td>
 <td>URL field where the value can be used as a link destination</td>
 </tr>
 <tr>
-<td><code>Number</code></td>
+<td><code>number</code></td>
 <td>number</td>
 <td>Field for numbers (int or float)</td>
 </tr>
 <tr>
-<td><code>Text</code></td>
+<td><code>text</code></td>
 <td>string</td>
 <td>A single line of text</td>
 </tr>
 <tr>
-<td><code>LongText</code></td>
+<td><code>long_text</code></td>
 <td>string</td>
 <td>Multiple lines of text</td>
 </tr>
 <tr>
-<td><code>SingleSelect</code></td>
+<td><code>single_select</code></td>
 <td>string</td>
 <td>Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.</td>
 </tr>
 <tr>
-<td><code>MultipleSelect</code></td>
+<td><code>multiple_select</code></td>
 <td>array of strings</td>
 <td>Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error</td>
 </tr>
 <tr>
-<td><code>Attachment</code></td>
+<td><code>attachment</code></td>
 <td>object</td>
 <td>Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.</td>
 </tr>
@@ -876,31 +876,31 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>MaxLength</code></td>
+<td><code>max_length</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>MinLength</code></td>
+<td><code>min_length</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>Minimum</code></td>
+<td><code>minimum</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>Maximum</code></td>
+<td><code>maximum</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>MaxSize</code></td>
+<td><code>max_size</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>Options</code></td>
+<td><code>options</code></td>
 <td>number</td>
 </tr>
 <tr>
-<td><code>Format</code></td>
+<td><code>format</code></td>
 <td>number</td>
 </tr>
 </tbody></table>
