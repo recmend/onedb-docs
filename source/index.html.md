@@ -402,8 +402,8 @@ VALIDATION NAME	| TYPE
 `minimum` | number
 `maximum` | number
 `max_size` | number
-`options` | number
-`format` | number
+`options` | set
+`format` | string
 
 # Items
 
