@@ -183,7 +183,7 @@ curl -X PUT https://api.onedb.xyz/accounts/193954b0-0ae8-5db7-b640-8110afe56438/
   "last_name": "Smith",
   "company": "Sunrise, Inc",
   "email": "john@sunrise.com",
-  "status": "activated",
+  "status": "active",
   "test_app_id": "ai_test_*",
   "test_app_secret": "sk_test_*",
   "live_app_id": "ai_live_*",
