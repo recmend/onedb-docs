@@ -640,7 +640,7 @@
   </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShortText"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"validations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -747,7 +747,7 @@
   </span><span class="s2">"fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"required"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Text"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShortText"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Title"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"validations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -816,52 +816,52 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code>bool</code></td>
+<td><code>Bool</code></td>
 <td>boolean</td>
 <td>yes/no switch</td>
 </tr>
 <tr>
-<td><code>date</code></td>
+<td><code>Date</code></td>
 <td>date</td>
 <td>Date field used to display any combination of month, day, year, and time</td>
 </tr>
 <tr>
-<td><code>set</code></td>
+<td><code>Set</code></td>
 <td>array</td>
 <td>Field containing multiple unique strings</td>
 </tr>
 <tr>
-<td><code>link</code></td>
+<td><code>Link</code></td>
 <td>string</td>
 <td>URL field where the value can be used as a link destination</td>
 </tr>
 <tr>
-<td><code>number</code></td>
+<td><code>Number</code></td>
 <td>number</td>
 <td>Field for numbers (int or float)</td>
 </tr>
 <tr>
-<td><code>text</code></td>
+<td><code>ShortText</code></td>
 <td>string</td>
 <td>A single line of text</td>
 </tr>
 <tr>
-<td><code>long_text</code></td>
+<td><code>LongText</code></td>
 <td>string</td>
 <td>Multiple lines of text</td>
 </tr>
 <tr>
-<td><code>single_select</code></td>
+<td><code>SingleSelect</code></td>
 <td>string</td>
 <td>Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.</td>
 </tr>
 <tr>
-<td><code>multiple_select</code></td>
+<td><code>MultipleSelect</code></td>
 <td>array of strings</td>
 <td>Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error</td>
 </tr>
 <tr>
-<td><code>attachment</code></td>
+<td><code>Attachment</code></td>
 <td>object</td>
 <td>Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.</td>
 </tr>
