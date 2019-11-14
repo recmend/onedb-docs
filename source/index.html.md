@@ -14,7 +14,7 @@ toc_footers:
 https://api.onedb.xyz
 ```
 
-Welcome to OneDB!
+Introducing OneDB — Store, search, and manage data of any type/size using simple REST APIs.
 
 Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're always optimizing for query performance or consider switching to a different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
 
