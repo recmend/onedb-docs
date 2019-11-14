@@ -245,7 +245,7 @@ curl -X POST https://api.onedb.xyz/collections \
   "fields": [
     {
       "required": true,
-      "type": "Text",
+      "type": "ShortText",
       "name": "Title",
       "slug": "title",
       "validations": {
@@ -336,7 +336,7 @@ curl -X GET https://api.onedb.xyz/collections/6fe54303-10ce-42b5-a4b0-38bc19cf50
   "fields": [
     {
       "required": true,
-      "type": "Text",
+      "type": "ShortText",
       "name": "Title",
       "slug": "title",
       "validations": {
@@ -381,16 +381,16 @@ Parameter | Type | Description
 
 Field Type | Data Type | Description
 ---------- | --------- | -----------
-`bool` | boolean | yes/no switch
-`date` | date | Date field used to display any combination of month, day, year, and time
-`set` | array | Field containing multiple unique strings
-`link` | string | URL field where the value can be used as a link destination
-`number` | number | Field for numbers (int or float)
-`text` | string | A single line of text
-`long_text` | string | Multiple lines of text
-`single_select` | string | Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.
-`multiple_select` | array of strings | Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error
-`attachment` | object | Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.
+`Bool` | boolean | yes/no switch
+`Date` | date | Date field used to display any combination of month, day, year, and time
+`Set` | array | Field containing multiple unique strings
+`Link` | string | URL field where the value can be used as a link destination
+`Number` | number | Field for numbers (int or float)
+`ShortText` | string | A single line of text
+`LongText` | string | Multiple lines of text
+`SingleSelect` | string | Selected option name. When creating or updating records, if the choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error.
+`MultipleSelect` | array of strings | Array of selected option names. When creating or updating records, if a choice string does not exactly match an existing option, the request will fail with an INVALID_MULTIPLE_CHOICE_OPTIONS error
+`Attachment` | object | Each attachment object may contain the following id, url, filename, size, type. See the uploading attachments section.
 
 ## Validations
 Each field also may have a validations object which defines all of the validations which have been set for the given field. The “TYPE” column defines the data type of the validations.
