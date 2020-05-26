@@ -5,7 +5,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - shell: curl
 
 toc_footers:
-
+  - <a href='mailto:info@oncandor.com?subject=OneDB Developer Key'>Request Early Access</a>
+  - Backed by <a href='https://candor.ws' target='_blank'>Candor</a>
 ---
 
 # Introduction
