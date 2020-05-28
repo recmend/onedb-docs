@@ -6,7 +6,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='mailto:info@oncandor.com?subject=OneDB Developer Key'>Request Early Access</a>
-  - Backed by <a href='https://candor.ws' target='_blank'>Candor</a>
+  - Made by <a href='https://candor.ws' target='_blank'>Candor</a>
 ---
 
 # Introduction
@@ -15,13 +15,13 @@ toc_footers:
 https://api.onedb.xyz
 ```
 
-Introducing OneDB — Store, search, and manage data of any type/size using simple REST APIs.
+Introducing OneDB — Store, search, and manage data of any type or size using simple REST APIs.
 
-Today, when you're building an app, you use one database for storing records, one for searching, and one for storing media files (images, attachments). As your app scales, you're always optimizing for query performance or consider switching to a different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent building features and serving your customers.
+Building an app requires multiple databases. One database for storing records, one for searching, and one for storing media files (images, attachments). With growth, we're constantly optimizing for query performance or eventually, switch to a different database to support the scale. This leads to dealing with migrations, managing multiple databases for data consistency, security, backups, and syncing. All of this takes time away that could be spent on building features and serving customers.
 
-This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. Our REST APIs makes it easy to move your data from OneDB to serve your special needs, if you ever need to.
+This is why we're building OneDB, the modern database for the cloud. OneDB doesn't lock you in and promotes data portability through standard data format (JSON) and REST APIs to manage all of your data needs. If you ever need to migrate away from OneDB, our API and data format makes it easy.
 
-Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security. A fully managed database.
+Easy to get started, scales seamlessly, and powerful with built-in search, validations, data security. A fully managed database for the cloud.
 
 This API reference provides information on available endpoints and how to interact with it.
 
@@ -953,8 +953,8 @@ Your customers data is in good hands.
 * The data on rest is encrypted with 256-bit encryption
 * All API requests should be over SSL
 * All data access API endpoints are authenticated
-* Our Servers are in a private VPC
-* We implement Least access privilege for every employee
+* Our servers are in a private VPC
+* We implement least privilege access control for every employee
 * Every access to our systems is monitored and logged
 * All commands run on our servers are logged
 * We enforce 2FA for all 3rd party services
